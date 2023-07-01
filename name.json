@@ -1,0 +1,12 @@
+{
+	"name": "name",
+	"description": "desc",
+	"installation": "install",
+	"usage": "use",
+	"contribution": "contribute",
+	"testing": "test",
+	"questions": "faw",
+	"license": [
+		"MIT"
+	]
+}

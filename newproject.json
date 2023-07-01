@@ -1,0 +1,12 @@
+{
+	"name": "NewProject",
+	"description": "Describe",
+	"installation": "Install",
+	"usage": "Use",
+	"contribution": "Contribute",
+	"testing": "Test",
+	"questions": "FAQ",
+	"license": [
+		"MIT"
+	]
+}

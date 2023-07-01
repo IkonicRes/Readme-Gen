@@ -1,0 +1,22 @@
+{
+  "name": "readme-gen",
+  "version": "1.0.0",
+  "description": "it says what it does",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log(\"test\")"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IkonicRes/Readme-Gen.git"
+  },
+  "author": "IkonicRes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IkonicRes/Readme-Gen/issues"
+  },
+  "homepage": "https://github.com/IkonicRes/Readme-Gen#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
