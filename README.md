@@ -1,4 +1,4 @@
-# README-Gen
+# README-GEN
 
 ## Table of Contents
  - [Description](#description)
@@ -7,30 +7,42 @@
  - [Contributing](#contributing)
  - [Testing](#testing)
  - [Questions](#questions)
+ - [Contact](#contact)
  - [License](#license)
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## License
-
 ## Description
-I wanted to make a program that could generate README in Markdown easily.
+I wanted to make an easy-to-use README generator. It uses npm's "inquirer" package to prompt the user for the information, then creates and structures a README.md file. My hope was to make a simple tool that generates a README for any project without the user having to write everything in markdown.
 
 ## Installation
-Run node index.js at the root directory
+In a terminal, run node index.js from the root directory of the project.
 
 ## Usage
-Follow the prompts and fill in the sections. When you're finished the file will be neatly generated for you. If you would like to omit a section, just press enter instead of entering text.
+Run the index file with node, then follow the prompts on the command-line to fill in your section text. If you would like to omit a section, simply press the enter key to skip that section and it will be passed over when generating. The resulting markdown file will be generated in the "/output" folder and will be named README.md, meaning each use of the tool will overwrite the last generated README.
 
 ## Contributing
-Be happy
+Be happy and do code.
 
 ## Testing
-Write a prompt tester with Jest
+Write a testing script using Jest
 
 ## Questions
 FAQ
+
+
+- GitHub Profile: [IkonicRes](https://github.com/IkonicRes)
+
+- For additional questions, reach out to Ikonicresonance@gmail.com.
+
+## Contact
+
+Preferred method of communication: Github
+
+
+
+## License
 
 MIT License
 
@@ -39,3 +51,4 @@ MIT License
     The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+

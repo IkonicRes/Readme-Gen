@@ -22,7 +22,7 @@ const licenses = {
   },
   wtfpl: {
     badge: "[![License: WTFPL](https://img.shields.io/badge/License-WTFPL-brightgreen.svg)](http://www.wtfpl.net/)",
-    text: `WTFPL – Do What the Fuck You Want to Public License
+    text: `WTFPL – Do What the F*ck You Want to Public License
 
     This is a permissive license that allows you to do whatever you want with the code, without any restrictions.
 
@@ -79,17 +79,31 @@ function objToString(obj) {
     if (val == "") { return str }
     if (p === "name") {
       const licenseBadge = licenses[obj.license[0]].badge;
-      return `# ${capitalizeFirstLetter(val)}\n\n${generateTableOfContents(obj)}\n\n${licenseBadge}\n\n## License\n\n`;
+      return `# ${capitalizeFirstLetter(val)}\n\n${generateTableOfContents(obj)}\n\n${licenseBadge}\n\n`;
     }
-    if (p === "license") { return str; }
+    if (p === "github" && val) {
+      return `${str}\n- GitHub Profile: [${val}](https://github.com/${val})\n\n`;
+    }
+    if (p === "email" && val) {
+      return `${str}- For additional questions, reach out to ${val}.\n\n`;
+    }
+    if (p === "contact") {
+      const contactValue = val.map(item => item === "Github" ? "Preferred method of communication: Github" : "Preferred method of communication: Email");
+      return `${str}## Contact\n\n${contactValue.join('\n')}\n\n`;
+    }
+    if (p === "license") {
+      const licenseBadge = licenses[val[0]].badge;
+      const licenseText = licenses[val[0]].text.replace(/^\s+|\s+$/g, "");
+      return `${str}\n\n## License\n\n${licenseText}\n\n`;
+    }
     return `${str}## ${capitalizeFirstLetter(p)}\n${val}\n\n`;
   }, '');
 
-  const licenseText = licenses[obj.license[0]].text.replace(/^\s+|\s+$/g, "");
-  content += licenseText + "\n";
-
   return content;
 }
+
+
+
 
 
 
@@ -140,8 +154,24 @@ inquirer
       message: 'Provide a FAQ section for your users.',
     },
     {
+      type: 'input',
+      name: 'github',
+      message: 'Enter your GitHub username:',
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'Enter your email address:',
+    },
+    {
       type: 'checkbox',
       message: 'What is your preferred method of communication?',
+      name: 'contact',
+      choices: ['Github', 'Email'],
+    },
+    {
+      type: 'checkbox',
+      message: 'What license does your project use?',
       name: 'license',
       choices: ['MIT', 'GNU', 'wtfpl', 'Apache', 'ISC', 'MPL', 'BSD', 'Unlicense'],
     },
