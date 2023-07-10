@@ -1,6 +1,7 @@
+//Import the required packages, inquirer for prompting the user for data, and fs for controlling the file system in order to write and save the data to a local file.
 const inquirer = require('inquirer');
 const fs = require('fs');
-
+//Define the license text for each option.
 const licenses = {
   MIT: {
     badge: "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
@@ -69,53 +70,56 @@ const licenses = {
     For more information about this license, please visit the [Unlicense website](http://unlicense.org/).`,
   },
 };
-
+//Here is a helper function that capitalizes an input string. This way we can use the key as the header info and just pass it through here to capitalize.
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
+//This object does most of the work, generating the content of the page once all of the data has been collected.
 function objToString(obj) {
+  //It iterates over every entry and if it matches one of the cases below, handles it specially, but otherwise just creates header and content from key and value.
   var content = Object.entries(obj).reduce((str, [p, val]) => {
+    //If there is no data (i.e. the user has pressed enter to skip the section) then it returns nothing and omits the section.
     if (val == "") { return str }
+    //If the key is the name, we generate the first section seperately from the content.
     if (p === "name") {
+      //First we set the license badge from the selected license
       const licenseBadge = licenses[obj.license[0]].badge;
+      //Then we return the main header title, generate the table of contents from the object and append that and the license badge to the end of the title, with some spacing to make it look nice.
       return `# ${capitalizeFirstLetter(val)}\n\n${generateTableOfContents(obj)}\n\n${licenseBadge}\n\n`;
     }
+    //If the key is github or the email, return the value with the formatted text.
     if (p === "github" && val) {
       return `${str}\n- GitHub Profile: [${val}](https://github.com/${val})\n\n`;
     }
     if (p === "email" && val) {
       return `${str}- For additional questions, reach out to ${val}.\n\n`;
     }
+    //If the key is contact, determine whether the user has chosen to be contacted via email or github and format the text to return.
     if (p === "contact") {
       const contactValue = val.map(item => item === "Github" ? "Preferred method of communication: Github" : "Preferred method of communication: Email");
       return `${str}## Contact\n\n${contactValue.join('\n')}\n\n`;
     }
+    //If the key is the license, get the content from the licenses object and format the section's header and text to append.
     if (p === "license") {
-      const licenseBadge = licenses[val[0]].badge;
       const licenseText = licenses[val[0]].text.replace(/^\s+|\s+$/g, "");
       return `${str}\n\n## License\n\n${licenseText}\n\n`;
     }
+    //If none of these cases apply, simply return the key capitalized as the header and the value of the key formatted into a section to append.
     return `${str}## ${capitalizeFirstLetter(p)}\n${val}\n\n`;
   }, '');
-
+  //When all iteration is done, return the resulting content.
   return content;
 }
-
-
-
-
-
-
-
+//This function generates a table of contents from the inquirer's returned data. If the value is empty meaning the user has skipped, or the key is either name, github or email, skip adding it to the table of contents.
 function generateTableOfContents(obj) {
   var table = Object.entries(obj).reduce((str, [p, val]) => {
-    if (val == "" || p === "name") { return str }
+    if (val == "" || p === "name" || p === "github" || p === "email") { return str }
     return `${str} - [${capitalizeFirstLetter(p)}](#${p.toLowerCase()})\n`;
   }, '');
   return "## Table of Contents\n" + table;
 }
-
+//Here is the structure of the prompts, and all the questions that make up the data for the README. Each question has a type of prompt, a variable name that gets assigned to each answer as its key, and the
+//string that we are prompting the user with for each section.
 inquirer
   .prompt([
     {
@@ -176,6 +180,7 @@ inquirer
       choices: ['MIT', 'GNU', 'wtfpl', 'Apache', 'ISC', 'MPL', 'BSD', 'Unlicense'],
     },
   ])
+  //Finally, once the prompts have all been answered and the promise fulfilled, we create the filepath and name, the data to print using our objToString function, and write it to our filepath.
   .then((data) => {
     const filename = `output\\README.md`;
     const fileData = objToString(data);
