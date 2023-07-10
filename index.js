@@ -94,7 +94,10 @@ function objToString(obj) {
     if (p === "email" && val) {
       return `${str}- For additional questions, reach out to ${val}.\n\n`;
     }
-    //If the key is contact, determine whether the user has chosen to be contacted via email or github and format the text to return.
+    //If the key is questions, format the value and key as header and content text and return it.
+    if (p === "questions") {
+      return `${str}\n\## ${capitalizeFirstLetter(p)}\n\nFAQ:\n${val}\n\n`;
+    }
     if (p === "contact") {
       const contactValue = val.map(item => item === "Github" ? "Preferred method of communication: Github" : "Preferred method of communication: Email");
       return `${str}## Contact\n\n${contactValue.join('\n')}\n\n`;
