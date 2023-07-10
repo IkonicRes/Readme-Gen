@@ -1,6 +1,8 @@
 //Import the required packages, inquirer for prompting the user for data, and fs for controlling the file system in order to write and save the data to a local file.
 const inquirer = require('inquirer');
 const fs = require('fs');
+
+
 //Define the license text for each option.
 const licenses = {
   MIT: {
@@ -70,10 +72,13 @@ const licenses = {
     For more information about this license, please visit the [Unlicense website](http://unlicense.org/).`,
   },
 };
+
+
 //Here is a helper function that capitalizes an input string. This way we can use the key as the header info and just pass it through here to capitalize.
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
 //This object does most of the work, generating the content of the page once all of the data has been collected.
 function objToString(obj) {
   //It iterates over every entry and if it matches one of the cases below, handles it specially, but otherwise just creates header and content from key and value.
@@ -121,6 +126,7 @@ function generateTableOfContents(obj) {
   }, '');
   return "## Table of Contents\n" + table;
 }
+
 //Here is the structure of the prompts, and all the questions that make up the data for the README. Each question has a type of prompt, a variable name that gets assigned to each answer as its key, and the
 //string that we are prompting the user with for each section.
 inquirer
@@ -183,6 +189,7 @@ inquirer
       choices: ['MIT', 'GNU', 'wtfpl', 'Apache', 'ISC', 'MPL', 'BSD', 'Unlicense'],
     },
   ])
+  
   //Finally, once the prompts have all been answered and the promise fulfilled, we create the filepath and name, the data to print using our objToString function, and write it to our filepath.
   .then((data) => {
     const filename = `output\\README.md`;
