@@ -17,7 +17,7 @@
 Description
 
 ## Installation
-Installation
+Install
 
 ## Usage
 Use
@@ -26,7 +26,7 @@ Use
 Contribute
 
 ## Testing
-Test Test Test
+Test test test
 
 
 ## Questions
@@ -35,9 +35,9 @@ FAQ:
 Why do my knees hurt?
 
 
-- GitHub Profile: [YourUsername](https://github.com/YourUsername)
+- GitHub Profile: [IkonicRes](https://github.com/IkonicRes)
 
-- For additional questions, reach out to YourEmail@YourEmailDomain.
+- For additional questions, reach out to YourEmail@Email.com.
 
 ## Contact
 

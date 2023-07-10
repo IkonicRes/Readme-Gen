@@ -20,7 +20,8 @@ I wanted to make an easy-to-use README generator. It uses npm's "inquirer" packa
 In a terminal, run node index.js from the root directory of the project.
 
 ## Usage
-Run the index file with node, then follow the prompts on the command-line to fill in your section text. If you would like to omit a section, simply press the enter key to skip that section and it will be passed over when generating. The resulting markdown file will be generated in the "/output" folder and will be named README.md, meaning each use of the tool will overwrite the last generated README.
+Run the index file with node, then follow the prompts on the command-line to fill in your section text. If you would like to omit a section, simply press the enter key to skip that section and it will be passed over when generating. The resulting markdown file will be generated in the "/output" folder and will be named README.md, meaning each use of the tool will overwrite the last generated README.  
+![Tutorial GIF](./assets/images/preview.gif)
 
 ## Contributing
 Be happy and do code.
