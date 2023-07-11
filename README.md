@@ -17,7 +17,7 @@
 I wanted to make an easy-to-use README generator. It uses npm's "inquirer" package to prompt the user for the information, then creates and structures a README.md file. My hope was to make a simple tool that generates a README for any project without the user having to write everything in markdown.
 
 ## Installation
-In a terminal, run node index.js from the root directory of the project.
+In a terminal, run "npm install" from the root directory of the project, and when that finishes run "node index.js".
 
 ## Usage
 Run the index file with node, then follow the prompts on the command-line to fill in your section text. If you would like to omit a section, simply press the enter key to skip that section and it will be passed over when generating. The resulting markdown file will be generated in the "/output" folder and will be named README.md, meaning each use of the tool will overwrite the last generated README. 
